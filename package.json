@@ -9,8 +9,10 @@
     "react-scripts": "^5.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "dev": "vite",
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "browserslist": {
     "production": [
@@ -23,5 +25,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "homepage": "https://cyt37.github.io/restaurant-website-react",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
