@@ -1,0 +1,815 @@
+/* =========================
+   1. Global Resets + Variables
+   ========================= */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --primary-color: #c0392b;
+    --secondary-color: #ffffff;
+    --text-color: #333333;
+    --bg-color: #f8f8f8;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+  }
+  
+  /* Utility class for centering */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* =========================
+     2. Header & Navigation
+     ========================= */
+  header {
+    background-color: var(--secondary-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo-and-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--primary-color);
+  }
+  
+  .logo img {
+    height: 70px;
+    margin-right: 0.5rem;
+  }
+  
+  nav {
+    position: relative;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin-left: 1.5rem;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+  }
+  
+  .nav-links a:hover,
+  .nav-links .active-link {
+    color: var(--primary-color);
+  }
+  
+  .hamburger {
+    display: none; /* will show via media query */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--text-color);
+  }
+  
+  /* =========================
+     3. Hero Section (index.html)
+     ========================= */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+  }
+  
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--secondary-color);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem 2rem;
+    border-radius: 4px;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-text p {
+    font-size: 1.2rem;
+  }
+
+  /* style your View Cart button */
+.hero-order-btn {
+  display: inline-block;            /* allow margins to center it */
+  margin: 1rem auto 0;              /* top-margin + auto horizontal centering */
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color); 
+  color: var(--secondary-color);   
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* optional: hover/focus states */
+.hero-order-btn:hover,
+.hero-order-btn:focus {
+  background-color: darken(var(--primary-color), 10%); /* a slightly darker shade */
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+  
+  /* =========================
+     4. Gallery Slider (index.html)
+     ========================= */
+  .gallery-section {
+    padding: 2rem 0;
+    background-color: var(--secondary-color);
+    text-align: center;
+  }
+  
+  .gallery-section h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+  
+  .slider-container {
+    position: relative;
+    width: 80%;
+    height: 300px;
+    max-width: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .slide {
+    position: absolute;
+    top: 0; left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .slide.active {
+    display: block;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    object-position: center;
+  }
+  
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
+  /* =========================
+     5. Menu Page (menu.html)
+     ========================= */
+  .menu-page {
+    padding: 2rem 1rem;
+  }
+  
+  .menu-page h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+  }
+  
+  .menu-section {
+    margin-bottom: 2rem;
+  }
+  
+  .menu-section h2 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+    padding-bottom: 0.25rem;
+  }
+  
+  .menu-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .menu-card {
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    padding: 1rem;
+    flex: 1 1 200px; /* responsive card width */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .menu-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+  
+  .menu-card .description {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .menu-card .price {
+    font-weight: bold;
+    color: var(--text-color);
+  }
+
+  /* ─── Menu Card: Flex Layout & Bigger Add Button ─── */
+.menu-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.menu-card .add-to-cart {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.menu-card .add-to-cart:hover {
+  transform: scale(1.05);
+}
+
+/* Menu section headings */
+.menu-page h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #c0392b;
+  margin-bottom: 2rem;
+}
+.menu-page h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 4px solid #c0392b;
+}
+
+/* Layout for each category */
+.menu-section .menu-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Card styling remains same */
+.menu-page .menu-card {
+  background: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-card h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #c0392b;
+}
+.menu-card .desc {
+  flex: 1;
+  margin: 0 1rem;
+  color: #555;
+}
+.menu-card .price {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+.menu-card .add-to-cart {
+  background-color: #c0392b;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+.menu-card .add-to-cart:hover {
+  background-color: #e74c3c;
+}
+  
+  /* =========================
+     6. About Page (about.html)
+     ========================= */
+  .about-page {
+    padding: 2rem 1rem;
+  }
+  
+  .about-page h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  
+  /* =========================
+     7. Contact Page (contact.html)
+     ========================= */
+  .contact-page {
+    padding: 2rem 1rem;
+  }
+  
+  .contact-page h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .map-container {
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .contact-form-section {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .contact-form label {
+    font-weight: 500;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--font-family);
+  }
+  
+  .contact-form button {
+    width: fit-content;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .contact-form button:hover {
+    background-color: #a83224;
+  }
+
+  /* ─── Cart Page: Center Total & Enlarge Remove Button ─── */
+
+   /* Cart page specific styling */
+
+    .cart-page { 
+      padding: 2rem 1rem; 
+      max-width: 800px; 
+      margin: auto; 
+    }
+
+    .cart-page table,table {
+    margin: 0 auto;              /* center the table itself, if you want */
+    border-collapse: collapse;    /* keep your borders neat */
+    margin-top: 2rem;
+    }
+
+    .cart-table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      margin-bottom: 1rem; 
+      margin: 0 auto
+    
+    }
+    .cart-table th, .ncart-table td { 
+      padding: 0.75rem; 
+      border: 1px solid #ddd; 
+      text-align: center; 
+      vertical-align: middle; 
+    }
+
+    .cart-page table th,.cart-page table td,table th,table td {
+    text-align: center;           /* center all text in every column */
+    vertical-align: middle;       /* middle‐align rows */
+    }
+
+    .checkout-summary { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      width: 100%;
+      margin-top: 2rem;
+    }
+
+    .checkout-summary button { 
+      padding: 0.75rem 1.5rem; 
+      background: var(--primary-color); 
+      color: var(--secondary-color); 
+      border: none; border-radius: 
+      4px; cursor: pointer; 
+    }
+    
+    /* (Optional) ensure the three children don’t wrap on small screens */
+    .checkout-summary > * {
+    flex-shrink: 0;
+    }
+
+/* Make the × remove-item buttons more prominent */
+.remove-item {
+  background-color: #f2f2f2;
+  font-size: 1.5rem;          /* bigger “×” */
+  padding: 0.3rem 0.6rem;     /* more click/tap area */
+  line-height: 1;             /* tighten up vertical centering */
+  background: none;           /* keep it looking like plain text */
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+  /* Optional: change background on hover */
+.remove-item:hover {
+  background-color: #e0e0e0;
+}
+
+/* ─── Clear Cart Button ─── */
+.clear-cart {
+  background-color: #777;       
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.clear-cart:hover {
+  background-color: #555;
+}
+
+
+  /* =========================
+     8. Footer (all pages)
+     ========================= */
+  footer {
+    background-color: var(--secondary-color);
+    padding: 1.5rem 1rem 0.5rem 1rem;
+    border-top: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-content .social-media,
+  .footer-content .business-hours {
+    margin: 0.5rem 0;
+  }
+  
+  .footer-content a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: var(--text-color);
+  }
+  
+  .footer-content a:hover {
+    color: var(--primary-color);
+  }
+  
+  .footer-note {
+    font-size: 0.85rem;
+    color: #777;
+  }
+  
+/* Footer styling */
+footer {
+  background: #222;
+  color: #eee;
+  padding: 1.5rem 0;
+  text-align: center;
+  margin-top: 2rem;
+}
+.footer-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.footer-container p {
+  margin: 0.5rem 0;
+}
+.footer-container a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+.footer-container .social-links {
+  margin-bottom: 1rem;
+}
+.footer-container .social-links a {
+  display: inline-block;
+  margin: 0 0.5rem;
+}
+
+/* Footer Container */
+.footer-container {
+  background: var(--dark-bg);
+  color: #fff;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
+}
+
+/* Inner Content Layout */
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+/* Social Media Links */
+.social-media a {
+  margin-right: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.social-media a:hover {
+  text-decoration: underline;
+}
+
+/* Business Hours Section */
+.business-hours h4 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+.business-hours p {
+  margin: 0.25rem 0;
+}
+
+/* Footer Note at Bottom */
+.footer-note {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: #ccc;
+}
+
+/* Override social-media links to be black */
+.footer-container .social-media a {
+  color: #000 !important;
+}
+
+/* Keep the hover underline but in a darker shade */
+.footer-container .social-media a:hover {
+  text-decoration: underline;
+  text-decoration-color: #333;
+}
+
+/* Make business‐hours text black too */
+.footer-container .business-hours h4,
+.footer-container .business-hours p {
+  color: #000 !important;
+}
+
+/* Map centering already applied above */
+.map-section {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+.map-section iframe {
+  width: 800px;
+  height: 600px;
+  max-width: 100%;
+  border: 0;
+}
+
+
+  /* =========================
+     9. Responsive / Media Queries
+     ========================= */
+  @media (max-width: 768px) {
+    /* Hide nav links, show hamburger */
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: var(--secondary-color);
+      flex-direction: column;
+      width: 200px;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      box-shadow: -2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .nav-links.open {
+      transform: translateX(0);
+    }
+    .nav-links li {
+      margin: 1rem 0;
+      text-align: center;
+    }
+    .hamburger {
+      display: flex;
+    }
+  
+    /* Make menu cards full width */
+    .menu-items {
+      flex-direction: column;
+    }
+    .menu-card {
+      flex: 1 1 100%;
+    }
+  
+    /* Slider container narrower on mobile */
+    .slider-container {
+      width: 95%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+    .hero-text p {
+      font-size: 1rem;
+    }
+
+  }
+
+  /* Center and enlarge Google Map */
+.map-section {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.map-section iframe {
+  width: 800px;
+  height: 500px;
+  max-width: 100%;
+  border: 0;
+}
+
+/* Cart Summary row under the table */
+.cart-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;          /* space above buttons */
+}
+
+/* Styling for the total text */
+.cart-summary .cart-total {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+/* Give your buttons a consistent min-width so they look neat */
+.cart-summary .btn {
+  min-width: 160px;
+  padding: 0.75rem 1.25rem;
+}
+
+/* (Optional) If you want the Clear Cart button slimmer, override: */
+.cart-summary .clear-btn {
+  min-width: 140px;
+}
+
+/* small +/- buttons around qty */
+.qty-btn {
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.qty-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+/* center the number */
+.qty-number {
+  min-width: 1rem;
+  display: inline-block;
+  text-align: center;
+}
+
+/* remove button styling */
+.remove-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #555;
+}
+
+.remove-btn:hover {
+  color: #000;
+}
+
+/* ensure the cart table rows don't break on small screens */
+.cart-table td,
+.cart-table th {
+  white-space: nowrap;
+}
+
