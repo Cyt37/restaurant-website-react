@@ -15,7 +15,9 @@ export default function Header() {
     <header>
       <div className="logo-and-nav container">
         <Link to="/" className="logo">
-          <img src="/images/logo.jpg" alt="Logo" />
+          <img
+          src={process.env.PUBLIC_URL + '/images/logo.jpg'}alt="Logo"
+          />
           <span>Uncle Sammy</span>
         </Link>
         <nav>

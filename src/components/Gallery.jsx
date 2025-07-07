@@ -1,3 +1,4 @@
+// File: src/components/Gallery.jsx
 import React, { useState, useEffect } from 'react';
 
 const slideImages = [
@@ -6,13 +7,17 @@ const slideImages = [
   'pizza.png',
   'fettuccine.png',
   'Tiramisu.png',
-  'panna.png'
+  'panna.png',
 ];
 
 export default function Gallery() {
   const [current, setCurrent] = useState(0);
+
   useEffect(() => {
-    const id = setInterval(() => setCurrent(i => (i + 1) % slideImages.length), 5000);
+    const id = setInterval(
+      () => setCurrent(i => (i + 1) % slideImages.length),
+      5000
+    );
     return () => clearInterval(id);
   }, []);
 
@@ -20,13 +25,29 @@ export default function Gallery() {
     <section className="gallery-section">
       <h2>Our Gallery</h2>
       <div className="slider-container">
-        {slideImages.map((src, i) => (
+        {slideImages.map((filename, i) => (
           <div key={i} className={i === current ? 'slide active' : 'slide'}>
-            <img src={`/images/${src}`} alt={`Dish ${i + 1}`} />
+            <img
+              src={process.env.PUBLIC_URL + `/images/${filename}`}
+              alt={`Dish ${i + 1}`}
+            />
           </div>
         ))}
-        <button className="prev" onClick={() => setCurrent((current - 1 + slideImages.length) % slideImages.length)}>&#10094;</button>
-        <button className="next" onClick={() => setCurrent((current + 1) % slideImages.length)}>&#10095;</button>
+
+        <button
+          className="prev"
+          onClick={() =>
+            setCurrent((current - 1 + slideImages.length) % slideImages.length)
+          }
+        >
+          ‹
+        </button>
+        <button
+          className="next"
+          onClick={() => setCurrent((current + 1) % slideImages.length)}
+        >
+          ›
+        </button>
       </div>
     </section>
   );
